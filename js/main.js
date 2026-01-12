@@ -29,6 +29,9 @@ async function init() {
     initMainMap();
     initMiniMap();
 
+    // Ensure map starts at Home (Taipei) and visible
+    resetMapsToHome();
+
     // 4. Initial Filter & Render
     setFilter('all');
 
@@ -150,9 +153,11 @@ function resetMapsToHome() {
             // User just said "showing the same place", let's keep it visible but reset location.
             // Actually, usually the mini-map is for the journey. For hero, maybe it disappears?
             // Let's assume reset location for now.
+            globeContainer.classList.add('active');
+
 
             miniMap.flyTo({
-                center: [170, 20], // Pacific View
+                center: [121.5, 25.0], // Taipei
                 zoom: 4,
                 speed: 1.5
             });

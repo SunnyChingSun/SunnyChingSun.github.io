@@ -20,6 +20,18 @@
 }
 
 .filter-logo {
+    flex-shrink: 0;
+    /* Never hide the name */
+}
+
+.nav-links {
+    display: inline-block;
+    /* CRITICAL: Explicitly set display to prevent disappearing */
+    flex-shrink: 0;
+    /* Never hide the thoughts link */
+}
+
+.filter-logo {
     font-weight: 800;
     font-family: var(--font-serif);
     font-size: 1.2rem;
@@ -38,6 +50,26 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    /* Robust Layout: flexible width with internal scroll */
+    flex-shrink: 1;
+    width: auto;
+    min-width: 0;
+    /* CRITICAL: Allows flex item to shrink below content size */
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+.filter-controls::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
 }
 
 .filter-btn {
@@ -89,21 +121,24 @@
 
 @media (max-width: 768px) {
     #filter-bar {
-        padding: 1.5rem;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
+        padding: 1.5rem 1rem;
+        /* Only adjust padding */
     }
 
     .filter-controls {
-        width: 100%;
-        justify-content: space-between;
-        padding: 10px 20px;
-        overflow-x: auto;
+        padding: 8px 20px;
+        /* Only adjust padding */
+        gap: 1rem;
     }
 
     .nav-links {
-        display: none;
+        padding-left: 0.5rem;
+        /* Minor spacing adjustment */
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        opacity: 0.9;
     }
 }
 

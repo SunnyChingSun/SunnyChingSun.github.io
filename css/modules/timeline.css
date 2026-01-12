@@ -69,6 +69,7 @@
     filter: brightness(1.3);
     /* Make the color pop */
 }
+
 /* Specific Glow Colors */
 .marker-type-life.active,
 .marker-type-work.active,
@@ -259,5 +260,18 @@
     #timeline-axis {
         right: 1rem;
         width: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    #timeline-axis {
+        right: 5px;
+    }
+
+    .step {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: auto;
+        max-width: none;
     }
 }

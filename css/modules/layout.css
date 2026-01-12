@@ -22,6 +22,12 @@ body {
     color: white;
 }
 
+@media (max-width: 768px) {
+    #hero {
+        padding: 15vh 1.5rem;
+    }
+}
+
 .hero-title {
     font-family: var(--font-serif);
     font-size: 4rem;
@@ -116,5 +122,9 @@ footer p {
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.8rem;
+    }
+
+    #thoughts {
+        padding: 4rem 1.5rem;
     }
 }

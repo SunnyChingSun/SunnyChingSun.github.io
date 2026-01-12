@@ -39,6 +39,15 @@
     border-radius: 50%;
 }
 
+@media (max-width: 768px) {
+    #footprint-globe {
+        width: 120px;
+        height: 120px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
 /* Canvas Styling */
 #footprint-globe canvas {
     border-radius: 50%;

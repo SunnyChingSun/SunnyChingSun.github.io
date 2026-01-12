@@ -90,7 +90,7 @@ export function initMiniMap() {
                 }
             ]
         },
-        center: [170, 20],
+        center: [121.5, 25.0],
         zoom: 4,
         interactive: false,
         attributionControl: false
