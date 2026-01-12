@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny Sun | The Journey</title>
+
+    <!-- Fonts -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+
+    <!-- MapLibre -->
+    <!-- MapLibre -->
+    <link href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' rel='stylesheet' />
+    <script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
+
+    <!-- Scrollama & D3 -->
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- 1. FULL SCREEN MAP (Fixed Background) -->
+    <div id="map-container">
+        <div id="map"></div>
+        <div id="map-overlay"></div>
+    </div>
+
+    <!-- 2. FILTER BAR (Sticky Top) -->
+    <nav id="filter-bar">
+        <div class="filter-logo">Sunny Sun</div>
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="life">Life</button>
+            <button class="filter-btn" data-filter="experience">Experience</button>
+            <button class="filter-btn" data-filter="project">Projects</button>
+        </div>
+        <div class="nav-links">
+            <a href="#thoughts">Thoughts</a>
+        </div>
+    </nav>
+
+
+
+    <!-- 3. TIMELINE AXIS (Fixed Right) -->
+    <div id="timeline-axis"></div>
+
+    <!-- 4. FLOATING CONTENT WRAPPER -->
+    <main id="floating-content">
+
+        <!-- HERO -->
+        <header id="hero">
+            <h1 class="hero-title">Hi, I'm Sunny.</h1>
+            <p class="hero-subtitle">
+                Data Scientist & Visual Storyteller.<br>
+                <span class="highlight">Uncovering the human narratives within data.</span>
+            </p>
+            <div class="scroll-indicator">↓ Scroll to Explore</div>
+        </header>
+
+        <!-- STORY CARDS -->
+        <article id="story">
+            <!-- Cards injected via JS -->
+        </article>
+
+        <!-- THOUGHTS SECTION -->
+        <section id="thoughts">
+            <div class="card-container">
+                <h2 class="section-title">Thoughts</h2>
+                <div id="thoughts-list">
+                    <!-- Thoughts injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/sunnychingsun" target="_blank">LinkedIn</a>
+                <a href="https://github.com/sunnychingsun" target="_blank">GitHub</a>
+                <a href="mailto:sunnychingsun@gmail.com">Email</a>
+            </div>
+            <p>© 2026 Sunny Sun</p>
+        </footer>
+
+    </main>
+
+
+    <!-- FOOTPRINT GLOBE -->
+    <div id="footprint-globe"></div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+:root {
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    --bg-glass: rgba(255, 255, 255, 0.98);
+    --text-main: #1f2937;
+    --text-light: #6b7280;
+
+    /* Semantic Colors */
+    --color-life: #10b981;
+    /* Emerald */
+    --color-study: #3b82f6;
+    /* Blue */
+    --color-project: #8b5cf6;
+    /* Purple */
+    --color-exp: #f59e0b;
+    /* Amber */
+    --color-default: #9ca3af;
+
+    --card-width: 500px;
+    --card-margin: 5vw;
+}

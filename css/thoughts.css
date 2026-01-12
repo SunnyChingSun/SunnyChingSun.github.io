@@ -1,0 +1,233 @@
+:root {
+    --bg-color: #050505;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --accent: #ffffff;
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Merriweather', serif;
+    /* Matching main site logo font */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Nav */
+.article-nav {
+    padding: 2rem 3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    /* Glassmorphism nav */
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 1) 0%, rgba(5, 5, 5, 0) 100%);
+    pointer-events: none;
+}
+
+.article-nav a {
+    pointer-events: auto;
+}
+
+.back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-separator {
+    color: var(--text-muted);
+    opacity: 0.3;
+}
+
+.nav-context {
+    color: var(--text-main);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards 0.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Container */
+.article-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 10rem 1.5rem 6rem 1.5rem;
+    min-height: 90vh;
+}
+
+/* Typography */
+.article-content h1 {
+    font-family: var(--font-sans);
+    /* Keep it clean/modern or use serif for editorial? User likes clean/monochrome. Sans is safer. */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--accent);
+}
+
+.article-content em {
+    display: block;
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 0.9rem;
+    margin-bottom: 4rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.article-content p {
+    margin-bottom: 1.8rem;
+    font-size: 1.125rem;
+    color: #e5e7eb;
+    font-weight: 300;
+}
+
+.article-content h2 {
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+}
+
+.article-content blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 3rem 0;
+    padding-left: 2rem;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.article-content code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.9em;
+    color: #a78bfa;
+    /* Subtle purple accent for code */
+}
+
+.article-content strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    color: #e5e7eb;
+}
+
+.article-content li {
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.article-content hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4rem 0;
+}
+
+/* Footer */
+.article-footer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem 1.5rem;
+    text-align: center;
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    margin-bottom: 2rem;
+}
+
+.footer-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.loading {
+    color: var(--text-muted);
+    text-align: center;
+    padding-top: 8rem;
+    font-weight: 300;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.error h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.error a {
+    color: var(--accent);
+}

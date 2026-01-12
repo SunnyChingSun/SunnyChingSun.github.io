@@ -1,0 +1,263 @@
+/* TIMELINE AXIS */
+#timeline-axis {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 75vh;
+    width: 4px;
+    background: rgba(222, 216, 216, 0.5);
+    z-index: 90;
+    pointer-events: auto;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Markers */
+.timeline-year-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+}
+
+.timeline-month-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
+
+.timeline-month-label {
+    position: absolute;
+    left: 20px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    font-weight: 300;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.timeline-year-label {
+    position: absolute;
+    right: 20px;
+    top: -8px;
+    font-size: 0.8rem;
+    color: #d8d8d8;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    opacity: 0.9;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Marker Active States */
+.item-marker.active {
+    width: 24px;
+    /* Slightly wider */
+    opacity: 1;
+    z-index: 100;
+    transform: translateX(-50%) scale(1.3);
+    /* Add crisp border */
+    filter: brightness(1.3);
+    /* Make the color pop */
+}
+/* Specific Glow Colors */
+.marker-type-life.active,
+.marker-type-work.active,
+.marker-type-internship.active,
+.marker-type-leadership.active {
+    box-shadow: 0 0 15px var(--color-life);
+}
+
+.marker-type-school.active,
+.marker-type-study.active {
+    box-shadow: 0 0 15px var(--color-study);
+}
+
+.marker-type-project.active,
+.marker-type-hackathon.active,
+.marker-type-competition.active {
+    box-shadow: 0 0 15px var(--color-project);
+}
+
+.timeline-range-bar.active {
+    opacity: 1;
+    width: 8px;
+    z-index: 99;
+    filter: brightness(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Interactive Cursor */
+.item-marker,
+.timeline-range-bar {
+    cursor: pointer;
+}
+
+.timeline-range-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    background-color: var(--color-default);
+    z-index: 94;
+    opacity: 0.6;
+    border-radius: 2px;
+    pointer-events: auto;
+}
+
+.item-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    z-index: 95;
+    pointer-events: auto;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.item-marker:hover {
+    width: 24px;
+    opacity: 1;
+    z-index: 100;
+}
+
+/* DATA BARCODE COLORS */
+.marker-type-life {
+    background-color: var(--color-life);
+}
+
+.marker-type-school,
+.marker-type-study {
+    background-color: var(--color-study);
+}
+
+.marker-type-work,
+.marker-type-job,
+.marker-type-internship {
+    background-color: var(--color-life);
+}
+
+/* Using Life=Emerald for Work too? or separate? Using Emerald as per old css */
+.marker-type-project,
+.marker-type-hackathon,
+.marker-type-competition {
+    background-color: var(--color-project);
+}
+
+/* STEP CARDS (Story) */
+.step {
+    margin: 40vh 0 40vh 5vw;
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    pointer-events: auto;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0.2;
+    transform: translateY(20px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 10;
+}
+
+.step.is-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.type-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+
+.step-meta {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-sans);
+}
+
+.step-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.step-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+.step-media img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Category Colors - Card Text */
+.step.type-life .type-label {
+    color: var(--color-life);
+}
+
+.step.type-school .type-label,
+.step.type-study .type-label {
+    color: var(--color-study);
+}
+
+.step.type-work .type-label,
+.step.type-job .type-label,
+.step.type-internship .type-label,
+.step.type-leadership .type-label {
+    color: var(--color-life);
+}
+
+.step.type-project .type-label,
+.step.type-hackathon .type-label,
+.step.type-competition .type-label {
+    color: var(--color-project);
+}
+
+/* Category Colors - Borders */
+.step.type-school .group-category {
+    border-color: rgba(59, 130, 246, 0.2);
+    color: var(--color-study);
+}
+
+@media (max-width: 900px) {
+    #timeline-axis {
+        right: 1rem;
+        width: 4px;
+    }
+}

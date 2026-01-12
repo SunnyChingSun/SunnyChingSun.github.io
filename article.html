@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thoughts | Sunny Sun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/thoughts.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Marked.js for Markdown Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="article-nav">
+        <a href="index.html" class="back-link">← Back to Map</a>
+        <span class="nav-separator">/</span>
+        <span class="nav-context">Thoughts</span>
+    </nav>
+
+    <main class="article-container">
+        <div id="loading" class="loading">Loading...</div>
+        <div id="article-content" class="article-content" style="display: none;">
+            <!-- Content Injected Here -->
+        </div>
+    </main>
+
+    <footer class="article-footer">
+        <div class="footer-divider"></div>
+        <div class="footer-meta">
+            Sunny Sun © 2026
+        </div>
+    </footer>
+
+    <script>
+        // Article Parsing Logic
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // 1. Fetch Metadata to find file path
+                const dataRes = await fetch('data/data.json');
+                const data = await dataRes.json();
+                const thoughts = data.thoughts || [];
+
+                const article = thoughts.find(t => t.id === id);
+
+                if (!article || !article.file) {
+                    throw new Error('Article not found');
+                }
+
+                // 2. Fetch Markdown
+                const mdRes = await fetch(article.file);
+                if (!mdRes.ok) throw new Error('Failed to load article content');
+                const markdown = await mdRes.text();
+
+                // 3. Render
+                const contentDiv = document.getElementById('article-content');
+                contentDiv.innerHTML = marked.parse(markdown);
+
+                document.title = `${article.title} | Sunny Sun`;
+                document.getElementById('loading').style.display = 'none';
+                contentDiv.style.display = 'block';
+
+            } catch (e) {
+                document.querySelector('main').innerHTML = `
+                    <div class="error">
+                        <h1>404</h1>
+                        <p>Thought not found.</p>
+                        <a href="index.html">Return Home</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>
