@@ -201,7 +201,6 @@
                 }
             ]
         },
-        
         {
             "id": "tech-lead",
             "year": "2023",
@@ -401,18 +400,28 @@
     ],
     "thoughts": [
         {
-            "id": "language-brain",
-            "title": "語言與連續性",
-            "date": "2024",
-            "excerpt": "人類似乎一直在嘗試將這個continuous的世界用discrete的方式去解釋...",
-            "file": "thoughts/language-brain.md"
+            "id": "data-storytelling",
+            "title": "Data Storytelling",
+            "date": "January 2026",
+            "excerpt": "Data doesn't speak for itself—we give it voice. Every visualization is an editorial decision.",
+            "file": "thoughts/data-storytelling.md",
+            "coverImage": "assets/covers/data-storytelling.png"
         },
         {
-            "id": "consciousness-energy",
-            "title": "意識與能量",
-            "date": "2024",
-            "excerpt": "意識是一種能量與信息在系統內部被高度整合、持續維持的動態過程。",
-            "file": "thoughts/consciousness-energy.md"
+            "id": "map-territory",
+            "title": "The Map vs The Territory",
+            "date": "December 2025",
+            "excerpt": "A map is not the territory. A model is not reality. Yet we constantly forget this.",
+            "file": "thoughts/map-territory.md",
+            "coverImage": "assets/covers/map-territory.png"
+        },
+        {
+            "id": "human-behind-data",
+            "title": "The Human Behind the Data",
+            "date": "November 2025",
+            "excerpt": "Behind every data point is a human story. We aggregate and normalize—but must never forget the humanity.",
+            "file": "thoughts/human-behind-data.md",
+            "coverImage": "assets/covers/human-data.png"
         }
     ]
 }

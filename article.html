@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Thoughts | Sunny Sun</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/thoughts.css">
+    <link rel="stylesheet" href="css/blog.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,26 +19,81 @@
 <body>
 
     <nav class="article-nav">
-        <a href="index.html" class="back-link">← Back to Map</a>
-        <span class="nav-separator">/</span>
-        <span class="nav-context">Thoughts</span>
+        <div class="nav-left">
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Map
+            </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="sun-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
     </nav>
 
-    <main class="article-container">
-        <div id="loading" class="loading">Loading...</div>
-        <div id="article-content" class="article-content" style="display: none;">
-            <!-- Content Injected Here -->
+    <header id="hero-section" class="article-hero" style="display: none;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div id="hero-meta" class="hero-meta"></div>
+            <h1 id="hero-title" class="hero-title"></h1>
         </div>
+    </header>
+
+    <main class="article-container">
+        <div id="loading" class="loading">Loading article...</div>
+        <div id="article-content" class="article-content" style="display: none;"></div>
     </main>
 
     <footer class="article-footer">
-        <div class="footer-divider"></div>
         <div class="footer-meta">
             Sunny Sun © 2026
         </div>
     </footer>
 
     <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.querySelector('.moon-icon');
+        const sunIcon = document.querySelector('.sun-icon');
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcons(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
         // Article Parsing Logic
         document.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
@@ -50,33 +105,40 @@
             }
 
             try {
-                // 1. Fetch Metadata to find file path
                 const dataRes = await fetch('data/data.json');
                 const data = await dataRes.json();
                 const thoughts = data.thoughts || [];
-
                 const article = thoughts.find(t => t.id === id);
 
-                if (!article || !article.file) {
-                    throw new Error('Article not found');
+                if (!article || !article.file) throw new Error('Article not found');
+
+                if (article.coverImage) {
+                    const hero = document.getElementById('hero-section');
+                    hero.style.backgroundImage = `url('${article.coverImage}')`;
+                    hero.style.display = 'flex';
                 }
 
-                // 2. Fetch Markdown
+                document.getElementById('hero-title').textContent = article.title;
+                document.getElementById('hero-meta').textContent = article.date;
+                document.title = `${article.title} | Sunny Sun`;
+
                 const mdRes = await fetch(article.file);
-                if (!mdRes.ok) throw new Error('Failed to load article content');
+                if (!mdRes.ok) throw new Error('Failed to load content');
                 const markdown = await mdRes.text();
 
-                // 3. Render
-                const contentDiv = document.getElementById('article-content');
-                contentDiv.innerHTML = marked.parse(markdown);
+                // Remove first H1 (# Title) to avoid duplication with hero
+                const cleanMarkdown = markdown.replace(/^#\s+.+\n/, '');
 
-                document.title = `${article.title} | Sunny Sun`;
+                const contentDiv = document.getElementById('article-content');
+                contentDiv.innerHTML = marked.parse(cleanMarkdown);
+
                 document.getElementById('loading').style.display = 'none';
                 contentDiv.style.display = 'block';
 
             } catch (e) {
+                console.error(e);
                 document.querySelector('main').innerHTML = `
-                    <div class="error">
+                    <div style="text-align:center; padding: 4rem;">
                         <h1>404</h1>
                         <p>Thought not found.</p>
                         <a href="index.html">Return Home</a>

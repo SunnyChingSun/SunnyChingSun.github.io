@@ -1,6 +1,6 @@
 # 意識與能量 (Consciousness & Energy)
 
-*2024*
+*Dec. 2025*
 
 意識是什麼？
 

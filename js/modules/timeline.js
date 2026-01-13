@@ -6,20 +6,38 @@ export function renderThoughts(thoughts) {
     if (!container) return;
     container.innerHTML = '';
 
-    thoughts.forEach(t => {
-        const a = document.createElement('a');
-        a.href = `article.html?id=${t.id}`;
-        a.classList.add('thought-card');
-        a.style.textDecoration = 'none';
-        a.style.display = 'block';
-
-        a.innerHTML = `
-            <div class="thought-date">${t.date}</div>
-            <h4 class="thought-title">${t.title}</h4>
-            <p class="thought-content">${t.excerpt}</p>
+    // Empty state
+    if (!thoughts || thoughts.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <p>Coming soon...</p>
+            </div>
         `;
-        container.appendChild(a);
+        return;
+    }
+
+    // Create carousel container
+    const carousel = document.createElement('div');
+    carousel.classList.add('thoughts-carousel');
+
+    thoughts.forEach(t => {
+        const card = document.createElement('a');
+        card.href = `article.html?id=${t.id}`;
+        card.classList.add('thought-card-vertical');
+        card.style.textDecoration = 'none';
+
+        card.innerHTML = `
+            <div class="thought-card-cover" style="background-image: url('${t.coverImage}')"></div>
+            <div class="thought-card-content">
+                <div class="thought-date">${t.date}</div>
+                <h4 class="thought-title">${t.title}</h4>
+                <p class="thought-excerpt">${t.excerpt}</p>
+            </div>
+        `;
+        carousel.appendChild(card);
     });
+
+    container.appendChild(carousel);
 }
 
 export function renderTimelineAxis(displayData, timelineBounds) {
@@ -133,7 +151,7 @@ export function renderStory(timeline) {
         const groupsHtml = renderGroups(item.groups);
         const statsHtml = (item.stats && item.stats.length > 0) ? `<div id="chart-${index}" class="chart-container"></div>` : '';
         const techHtml = (item.technologies && item.technologies.length > 0) ?
-            `<div class="tech-stack">${item.technologies.join(' · ')}</div>` : '';
+            `<div class="tech-stack">${item.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}</div>` : '';
 
         const linksHtml = renderLinks(item.links);
 

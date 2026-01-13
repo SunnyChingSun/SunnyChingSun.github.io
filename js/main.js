@@ -9,6 +9,14 @@ let scroller = null;
 let currentIndex = -1;
 
 async function init() {
+    // Force scroll to top on refresh
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
     // 1. Fetch Data
     const response = await fetch(DATA_URL);
     const data = await response.json();
@@ -29,15 +37,13 @@ async function init() {
     initMainMap();
     initMiniMap();
 
-    // Ensure map starts at Home (Taipei) and visible
-    resetMapsToHome();
-
     // 4. Initial Filter & Render
     setFilter('all');
 
     // 5. Setup UI Listeners
     setupFilters();
     setupTimelineScrubbing();
+    setupThoughtsVisibilityToggle();
 }
 
 function setFilter(type) {
@@ -283,6 +289,47 @@ function setupTimelineScrubbing() {
             }
         }
     });
+}
+
+function setupThoughtsVisibilityToggle() {
+    const thoughtsSection = document.getElementById('thoughts');
+
+    // We get elements inside the callback to ensure they exist
+    if (!thoughtsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const timelineAxis = document.getElementById('timeline-axis');
+            const miniMapGlobe = document.getElementById('footprint-globe');
+
+            if (entry.isIntersecting) {
+                // HIDE (Force with !important to override CSS .active class)
+                if (timelineAxis) {
+                    timelineAxis.style.opacity = '0';
+                    timelineAxis.style.pointerEvents = 'none';
+                }
+                if (miniMapGlobe) {
+                    miniMapGlobe.style.setProperty('opacity', '0', 'important');
+                    miniMapGlobe.style.pointerEvents = 'none';
+                }
+            } else {
+                // SHOW
+                if (timelineAxis) {
+                    timelineAxis.style.opacity = '1';
+                    timelineAxis.style.pointerEvents = 'auto';
+                }
+                if (miniMapGlobe && miniMapGlobe.classList.contains('active')) {
+                    miniMapGlobe.style.setProperty('opacity', '1', 'important');
+                    miniMapGlobe.style.pointerEvents = 'auto';
+                }
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1
+    });
+
+    observer.observe(thoughtsSection);
 }
 
 // Boot

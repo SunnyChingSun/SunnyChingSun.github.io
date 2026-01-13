@@ -11,6 +11,7 @@
     pointer-events: auto;
     border-radius: 3px;
     cursor: pointer;
+    transition: opacity 0.3s ease;
 }
 
 /* Markers */
@@ -161,16 +162,16 @@
 .step {
     margin: 40vh 0 40vh 5vw;
     width: 100%;
-    max-width: 420px;
+    max-width: 470px;
     background: #ffffff;
     padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     pointer-events: auto;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     opacity: 0.2;
     transform: translateY(20px);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     position: relative;
     z-index: 10;
 }
@@ -178,7 +179,7 @@
 .step.is-active {
     opacity: 1;
     transform: translateY(0) scale(1);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
 }
 
 .type-label {
@@ -219,12 +220,21 @@
     margin-bottom: 1.5rem;
 }
 
+.step-media {
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
 .step-media img {
     width: 100%;
-    border-radius: 8px;
-    margin-top: 1.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.step-media:hover img {
+    transform: scale(1.05);
 }
 
 /* Category Colors - Card Text */
@@ -265,13 +275,14 @@
 
 @media (max-width: 768px) {
     #timeline-axis {
-        right: 5px;
+        right: 20px;
     }
 
     .step {
         margin-left: 20px;
-        margin-right: 20px;
-        width: auto;
-        max-width: none;
+        margin-right: 100px;
+        width: 29rem;
+        max-width: 90%;
+        padding: 2rem;
     }
 }

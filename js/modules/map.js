@@ -166,5 +166,11 @@ export function initMiniMap() {
                 'circle-opacity': 0.8
             }
         });
+
+        // Make mini-map visible on load and center on Taipei
+        const globeContainer = document.getElementById('footprint-globe');
+        if (globeContainer) {
+            globeContainer.classList.add('active');
+        }
     });
 }

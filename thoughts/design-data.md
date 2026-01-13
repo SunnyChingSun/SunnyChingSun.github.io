@@ -1,6 +1,6 @@
 # The Intersection of Design and Data
 
-*January 14, 2024*
+*Dec. 2025*
 
 We often pretend that data is objective. We treat rows and columns like raw truth, harvested from the world and served on a cold platter of CSVs.
 
