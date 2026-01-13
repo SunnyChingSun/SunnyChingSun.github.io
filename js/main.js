@@ -265,10 +265,24 @@ function updateGlobeTrail(timeline, currentIndex) {
     if (dotsSource) {
         dotsSource.setData({
             type: 'FeatureCollection',
-            features: uniqueCoords.map(c => ({
-                type: 'Feature',
-                geometry: { type: 'Point', coordinates: c }
-            }))
+            features: uniqueCoords.map(c => {
+                // Find the event that corresponds to this coordinate to get the city name
+                // Since multiple events might share a coord, we'll just take the first one or the most recent one.
+                // The 'uniqueCoords' array was built from 'visitedEvents', so we can match them back.
+                // However, uniqueCoords logic above lost the reference to the event. 
+                // Let's refactor the unique logic slightly in the same block if possible, 
+                // or just look it up. Looking up is safer here.
+                const event = visitedEvents.find(e =>
+                    e.location.center[0] === c[0] && e.location.center[1] === c[1]
+                );
+                return {
+                    type: 'Feature',
+                    geometry: { type: 'Point', coordinates: c },
+                    properties: {
+                        city: event ? (event.city || '') : ''
+                    }
+                };
+            })
         });
     }
 }

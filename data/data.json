@@ -11,6 +11,7 @@
             "date": "Sep. 2004",
             "type": "life",
             "title": "The Origin",
+            "city": "Taipei",
             "location": {
                 "lat": 25.0330,
                 "lng": 121.5654,
@@ -26,6 +27,7 @@
             "date": "Jul. 2014",
             "type": "life",
             "title": "Crossing the Strait",
+            "city": "Suzhou",
             "location": {
                 "lat": 31.2989,
                 "lng": 120.5853,
@@ -41,6 +43,7 @@
             "date": "Sep. 2017",
             "type": "life",
             "title": "Middle School Years",
+            "city": "Kunshan",
             "location": {
                 "lat": 31.3847,
                 "lng": 120.9808,
@@ -86,6 +89,7 @@
             "date": "Apr. 2023",
             "type": "project",
             "title": "First Research Project: Digital Divide",
+            "city": "Kunshan",
             "location": {
                 "lat": 31.3847,
                 "lng": 120.9808,
@@ -102,6 +106,7 @@
             "date": "Sep. 2023",
             "type": "life",
             "title": "California Dream",
+            "city": "San Diego",
             "location": {
                 "lat": 32.8801,
                 "lng": -117.2340,
@@ -118,6 +123,7 @@
             "endDate": "Jun. 2027",
             "type": "school",
             "title": "Academic Journey @ UCSD",
+            "city": "San Diego",
             "location": {
                 "lat": 32.8801,
                 "lng": -117.2340,
@@ -208,6 +214,7 @@
             "endDate": "Present",
             "type": "leadership",
             "title": "Technical Project Lead @ DSC",
+            "city": "San Diego",
             "location": {
                 "lat": 32.8801,
                 "lng": -117.2340,
@@ -230,6 +237,7 @@
             "endDate": "Sep. 2024",
             "type": "internship",
             "title": "Data Science Intern",
+            "city": "New York",
             "location": {
                 "lat": 40.7128,
                 "lng": -74.0060,
@@ -252,6 +260,7 @@
             "date": "Apr. 2024",
             "type": "project",
             "title": "Superhero Sequel Prediction",
+            "city": "Los Angeles",
             "location": {
                 "lat": 34.0522,
                 "lng": -118.2437,
@@ -284,6 +293,7 @@
             "date": "April 2024",
             "type": "competition",
             "title": "DiamondHack",
+            "city": "San Diego",
             "location": {
                 "lat": 32.8801,
                 "lng": -117.2340,
@@ -316,6 +326,7 @@
             "date": "2025",
             "type": "project",
             "title": "IsleNet",
+            "city": "Seychelles",
             "location": {
                 "lat": -4.6796,
                 "lng": 55.4920,
@@ -348,6 +359,7 @@
             "date": "2025",
             "type": "project",
             "title": "Jeanotype",
+            "city": "San Diego",
             "location": {
                 "lat": 32.8801,
                 "lng": -117.2340,
@@ -381,6 +393,7 @@
             "endDate": "Sep. 2025",
             "type": "internship",
             "title": "Software Engineer Intern",
+            "city": "San Francisco",
             "location": {
                 "lat": 37.7749,
                 "lng": -122.4194,

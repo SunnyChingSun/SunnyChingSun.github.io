@@ -167,6 +167,35 @@ export function initMiniMap() {
             }
         });
 
+        // Add City Labels Layer
+        miniMap.addLayer({
+            'id': 'footprint-city-label',
+            'type': 'symbol',
+            'source': 'footprint-dots',
+            'layout': {
+                'text-field': ['get', 'city'],
+                'text-font': ['Klokantech Noto Sans Bold'],
+                'text-size': 12,
+                'text-offset': [0, 1.2], // Below the dot
+                'text-anchor': 'top',
+                'text-ignore-placement': true, // Allow overlapping
+                'text-allow-overlap': true
+            },
+            'paint': {
+                'text-color': '#ffffff',
+                'text-halo-color': '#000000',
+                'text-halo-width': 2,
+                'text-opacity': 0.9
+            }
+        });
+
+        // Optional: Hide or dim country labels if they clash
+        if (miniMap.getLayer('country-label')) {
+            miniMap.setLayoutProperty('country-label', 'visibility', 'none');
+            // Or make them very faint:
+            // miniMap.setPaintProperty('country-label', 'text-opacity', 0.3);
+        }
+
         // Make mini-map visible on load and center on Taipei
         const globeContainer = document.getElementById('footprint-globe');
         if (globeContainer) {
