@@ -29,8 +29,8 @@
             "title": "Crossing the Strait",
             "city": "Suzhou",
             "location": {
-                "lat": 31.2989,
-                "lng": 120.5853,
+                "lat": 31.3135,
+                "lng": 120.7357,
                 "zoom": 13,
                 "pitch": 50,
                 "bearing": -15
@@ -45,10 +45,10 @@
             "title": "Middle School Years",
             "city": "Kunshan",
             "location": {
-                "lat": 31.3847,
-                "lng": 120.9808,
-                "zoom": 13,
-                "pitch": 40,
+                "lat": 31.2912,
+                "lng": 121.0771,
+                "zoom": 15,
+                "pitch": 30,
                 "bearing": 10
             },
             "content": "Relocated to <strong>Kunshan</strong> for 7th grade (~30 mins from Suzhou). A hub of manufacturing and tech integration."
@@ -60,11 +60,11 @@
             "type": "Study",
             "title": "The Spark",
             "location": {
-                "lat": 31.3847,
-                "lng": 120.9808,
-                "zoom": 14,
+                "lat": 31.2912,
+                "lng": 121.0771,
+                "zoom": 15,
                 "pitch": 60,
-                "bearing": 10
+                "bearing": -10
             },
             "content": "Took my first <strong>Statistics</strong> class in 9th grade. This was the moment I realized numbers could tell stories. I became fascinated by Data Science."
         },
@@ -75,8 +75,8 @@
             "type": "Study",
             "title": "Code & Logic",
             "location": {
-                "lat": 31.3847,
-                "lng": 120.9808,
+                "lat": 31.2912,
+                "lng": 121.0771,
                 "zoom": 14,
                 "pitch": 60,
                 "bearing": 20
@@ -91,8 +91,8 @@
             "title": "First Research Project: Digital Divide",
             "city": "Kunshan",
             "location": {
-                "lat": 31.3847,
-                "lng": 120.9808,
+                "lat": 31.2912,
+                "lng": 121.0771,
                 "zoom": 15,
                 "pitch": 70,
                 "bearing": 10

@@ -20,12 +20,19 @@
 }
 
 .filter-logo {
-    font-weight: 800;
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: white;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    text-decoration: none;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+.filter-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .filter-controls {
@@ -102,7 +109,8 @@
     }
 
     .filter-logo {
-        font-size: 1rem;
+        width: 40px;
+        height: 40px;
     }
 
     .filter-controls {
